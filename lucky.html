@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function luckDraw() {
+        var a = document.forms["lucky"]["number"].value; 
+        var luckyNumber = parseInt(Math.random() * 100); 
+        if( a == luckyNumber) {
+            alert("You won!!")
+            return;
+     }
+   
+    alert("Better luck next time luck No is : " + luckyNumber);
+    return;
+}
+</script> 
+<meta charset="utf-8">
+    <title>lucky draw</title>
+    <meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+    <meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form."/>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+</head>
+<body onload="document.login.email.focus();">
+    <h6>Lucky draw</h6>
+    Use tab keys to move from one input field to the next.
+    <form name='lucky' onsubmit="return luckDraw()">
+    <ul>
+        <li><label for="number">number:</label></li>
+        <li><input type="int" name="number" /></li>
+        <li><input type="submit" name="submit" value="submit" /></li>
+</form>
+</body>
+</html>
