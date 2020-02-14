@@ -1,0 +1,40 @@
+body{
+	background-color: rgb(255,255,25);
+}
+
+#top{
+	text-align: center;
+	text-decoration-color: #1D84C9;
+	font-family:serif;
+	font-style: italic;
+	font-size: 50px;
+}
+
+#moving_text{
+	color: green;
+	animation-name: ani;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+@keyframes ani{
+	from{color: green}
+	to{color: red}
+}
+th,td{
+	padding: 20px;
+	text-align: left;
+}
+
+h2{
+	color: rgb(152,171,0);
+	text-decoration: underline;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+hr{
+	border-color: blue;
+	border-style: dotted;
+	border-width: 5px;
+	border-bottom-width: 0px;
+}
