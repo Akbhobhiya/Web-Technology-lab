@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function validateSignUp() 
+        {
+            var firstName = document.forms["signUp"]["firstName"].value;              
+            var lastName = document.forms["signUp"]["lastName"].value;
+            var email = document.forms["signUp"]["email"].value;              
+            var password1 = document.forms["signUp"]["password1"].value;
+            var school = document.forms["signUp"]["school"].value;              
+            var password = document.forms["signUp"]["password"].value;
+            if (firstName == "")                                  
+            {
+                alert("Please enter your firstName.");  
+                return false;
+            }
+            if (lastName == "")                              
+            {
+                alert("Please enter your lastName.");
+                return false;
+            }
+            if (email == "")                                  
+            {
+                alert("Please enter your email.");  
+                return false;
+            }
+            if (password == "")                              
+            {
+                alert("Please enter your password.");
+                return false;
+            }
+            if (school == "")                                  
+            {
+                alert("Please enter your school.");  
+                return false;
+            }
+            if (password1 == "")                              
+            {
+                alert("Please enter your password1.");
+                return false;
+            }
+            return true;
+        }
+
+
+</script> 
+<meta charset="utf-8">
+    <title>Sign Up</title>
+    <meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+    <meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form."/>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+</head>
+<body onload="document.signUp.email.focus();">
+    <h6>Sign Up</h6>
+    Use tab keys to move from one input field to the next.
+    <form name='signUp' onsubmit="return validateSignUp()">
+    <ul>
+        <li><label for="firstName">firstName:</label></li>
+        <li><input type="text" name="firstName" size="12" /></li>
+        <li><label for="lastName">lastName:</label></li>
+        <li><input type="text" name="lastName" size="12" /></li>
+        <li><label for="email">email:</label></li>
+        <li><input type="text" name="email" size="12" /></li>
+        <li><label for="password1">password1:</label></li>
+        <li><input type="password1" name="password1" size="8" /></li>
+        <li><label for="school">school:</label></li>
+        <li><input type="text" name="school" size="12" /></li>
+        <li><label for="password">password:</label></li>
+        <li><input type="password" name="password" size="8" /></li>
+        <li><input type="submit" name="submit" value="submit" /></li>
+</form>
+</body>
+</html>
