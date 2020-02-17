@@ -1,4 +1,5 @@
 ## Welcome to GitHub Pages
+You can check the published webpage by github here -https://akbhobhiya.github.io/Web-Technology-lab/ 
 
 You can use the [editor on GitHub](https://github.com/Akbhobhiya/Web-Technology-lab-/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
