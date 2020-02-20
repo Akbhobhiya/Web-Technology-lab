@@ -3,7 +3,8 @@
 <head>
 	<title>ACC NEWS</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	 <script src="script.js"></script> 
+	<script src="script.js"></script> 
+  
 <style>
 	body{
 		background-color:#e6ffff
@@ -24,17 +25,13 @@
     	color:brown;
     }
 </style>
-	</style>
 </head>
-<body>
+<body onload="checkCookie()">
 	 <img id ="img" src="logo.jpeg" alt="logo"> 
-	
-    <p style="text-align:right;font-size: 20px;color:blue">
-		<a href="https://www.linkedin.com/in/akbhobhiya/" target="_blank">Created By Akbhobhiya</a>
-	</p>
 	<p style="text-align:right;font-size: 20px;color:blue">
 		<a href="http://www.google.com" target="_blank">Sources</a>
 	</p>
+  <h1 style="font-size:40px;color:darkblue;text-align:center" id="topFunction">ACC NEWS</h1>
 	<a id="sub" href="signup.html" class="btn btn-default">Sign Up Here</a>
 	 <a id="sub" href="suscribe.html" class="btn btn-default">Subscribe Here</a>
 	 <a id="sub" href="login.html" class="btn btn-default">Login Here</a>
@@ -51,9 +48,40 @@
      <p> New News Timings are <time>10:00</time> AM.</p>  
 
 
-	<h1 style="font-size:40px;color:darkblue;text-align:center" id="topFunction">ACC NEWS</h1>
+	
 	<h2 style="font-size:40px;color:red;text-align:left;">Top Headlines</h2>
 	<meter value="2" min="0" max="10">2 out of 10</meter><br>
+
+<div class="slideshow-container" >
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="slide1.jpg" style="width:100%">
+  <div class="text">Caption Text</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="slide2.jpeg" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="slide3.jpg" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+
 	<marquee id="marquee" behavior="scroll" direction="left">Today's best news only on ACC News, for support subscribe here!</marquee>
 	<p style="color:orange">Today's Top <mark style="color:blue">Headlines here</p>
 
@@ -288,9 +316,91 @@
   </div>
 </div> 
 
+<script>
+    var slideIndex = 0;
+    showSlides();
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
+  <script LANGUAGE="JavaScript">
+    function getCookieVal (offset)
+    { 
+      var endstr = document.cookie.indexOf (";", offset);
+      if (endstr == -1)
+      endstr = document.cookie.length;
+      return unescape(document.cookie.substring(offset, endstr));
+    }
+    function GetCookie (name)
+    {
+      var arg = name + "=";
+      var alen = arg.length;
+      var clen = document.cookie.length;
+      var i = 0;
+      while (i < clen) 
+      {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg)
+        return getCookieVal (j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) 
+         break; 
+      }
+      return null;
+    }
+    function SetCookie (name, value) {
+      var argv = SetCookie.arguments;
+      var argc = SetCookie.arguments.length;
+      var expires = (2 < argc) ? argv[2] : null;
+      var path = (3 < argc) ? argv[3] : null;
+      var domain = (4 < argc) ? argv[4] : null;
+      var secure = (5 < argc) ? argv[5] : false;
+      document.cookie = name + "=" + escape (value) +
+      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+      ((path == null) ? "" : ("; path=" + path)) +
+      ((domain == null) ? "" : ("; domain=" + domain)) +
+      ((secure == true) ? "; secure" : "");
+    }
+    function DisplayInfo()
+    {
+      var expdate = new Date();
+      var visit;
+      expdate.setTime(expdate.getTime() +  (24 * 60 * 60 * 1000 * 365)); 
+      if(!(visit = GetCookie("visit"))) 
+      visit = 0;
+      visit++;
+      SetCookie("visit", visit, expdate, "/", null, false);
+      var message;
+      if(visit == 1) 
+        message="         Welcome to my page!";
+      else message="Welcome again"
+      alert("\n"+"You visit this WebPage  "
+                +visit+"  time(s)."+"\n"+"\n"
+                +message);
+    }
+    function ResetCounts() {
+      var expdate = new Date();
+      expdate.setTime(expdate.getTime() +  (24 * 60 * 60 * 1000 * 365)); 
+      visit = 0;
+      SetCookie("visit", visit, expdate , "/", null, false);
+      history.go(0); 
+    }
 
-
-
+    window.onload=DisplayInfo
+</script>
 </body>
 </html>
 
