@@ -57,7 +57,7 @@
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
   <img src="slide1.jpg" style="width:100%">
-  <div class="text">Caption Text</div>
+  <div class="text">Caption One</div>
 </div>
 
 <div class="mySlides fade">
@@ -337,69 +337,56 @@
     }
   </script>
   <script LANGUAGE="JavaScript">
-    function getCookieVal (offset)
-    { 
-      var endstr = document.cookie.indexOf (";", offset);
-      if (endstr == -1)
-      endstr = document.cookie.length;
-      return unescape(document.cookie.substring(offset, endstr));
-    }
-    function GetCookie (name)
-    {
-      var arg = name + "=";
-      var alen = arg.length;
-      var clen = document.cookie.length;
-      var i = 0;
-      while (i < clen) 
-      {
-        var j = i + alen;
-        if (document.cookie.substring(i, j) == arg)
-        return getCookieVal (j);
-        i = document.cookie.indexOf(" ", i) + 1;
-        if (i == 0) 
-         break; 
-      }
-      return null;
-    }
-    function SetCookie (name, value) {
-      var argv = SetCookie.arguments;
-      var argc = SetCookie.arguments.length;
-      var expires = (2 < argc) ? argv[2] : null;
-      var path = (3 < argc) ? argv[3] : null;
-      var domain = (4 < argc) ? argv[4] : null;
-      var secure = (5 < argc) ? argv[5] : false;
-      document.cookie = name + "=" + escape (value) +
-      ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
-      ((path == null) ? "" : ("; path=" + path)) +
-      ((domain == null) ? "" : ("; domain=" + domain)) +
-      ((secure == true) ? "; secure" : "");
-    }
-    function DisplayInfo()
-    {
-      var expdate = new Date();
-      var visit;
-      expdate.setTime(expdate.getTime() +  (24 * 60 * 60 * 1000 * 365)); 
-      if(!(visit = GetCookie("visit"))) 
-      visit = 0;
-      visit++;
-      SetCookie("visit", visit, expdate, "/", null, false);
-      var message;
-      if(visit == 1) 
-        message="         Welcome to my page!";
-      else message="Welcome again"
-      alert("\n"+"You visit this WebPage  "
-                +visit+"  time(s)."+"\n"+"\n"
-                +message);
-    }
-    function ResetCounts() {
-      var expdate = new Date();
-      expdate.setTime(expdate.getTime() +  (24 * 60 * 60 * 1000 * 365)); 
-      visit = 0;
-      SetCookie("visit", visit, expdate , "/", null, false);
-      history.go(0); 
-    }
+    function setCookie(cname,cvalue,exdays) {
+ 
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  } 
 
-    window.onload=DisplayInfo
+
+function getCookie(cname) {
+ 
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+ 
+  for(var i = 0; i < ca.length; i++) {
+   
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+
+      c = c.substring(1);
+    }
+   
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+   
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+ 
+  var user=getCookie("username");
+  var counter=getCookie("count");
+ 
+  if (user != "") {
+    counter++;
+    setCookie("count",counter,30);
+    alert("Welcome again " + user + "\n number of times you visited website:"+counter);
+  }else{
+     
+      user = prompt("Please enter your name:","");
+      counter=1;
+      if (user != "" && user != null) {
+        setCookie("username", user, 30);
+       
+      }
+    }
+  }
 </script>
 </body>
 </html>
