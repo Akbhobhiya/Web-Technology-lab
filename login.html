@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function validateLogIn() {
+            var email = document.forms["login"]["email"].value;              
+            var password = document.forms["login"]["password"].value;
+            if (email == "")                                  
+            {
+                alert("Please enter your email.");  
+                return false;
+            }
+            if (password == "")                              
+            {
+                alert("Please enter your password.");
+                return false;
+            }
+            return true;
+        }  
+</script> 
+<meta charset="utf-8">
+    <title>login</title>
+    <meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+    <meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form."/>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+</head>
+<body onload="document.login.email.focus();">
+    <h6>Login Form</h6>
+    Use tab keys to move from one input field to the next.
+    <form name='login' onsubmit="return validateLogIn()">
+    <ul>
+        <li><label for="email">email:</label></li>
+        <li><input type="text" name="email" size="12" /></li>
+        <li><label for="password">password:</label></li>
+        <li><input type="password" name="password" size="8" /></li>
+        <li><input type="submit" name="submit" value="submit" /></li>
+</form>
+</body>
+</html>
